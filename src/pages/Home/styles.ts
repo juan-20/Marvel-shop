@@ -9,11 +9,16 @@ export const ProductList = styled.ul`
 
   li {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .basic-information{
+    display: flex;
     flex-direction: column;
     background: #fff;
     border-radius: 4px;
     padding: 20px;
-
+    
     img {
       align-self: center;
       max-width: 250px;
@@ -33,8 +38,7 @@ export const ProductList = styled.ul`
     }
 
     button {
-      background: #7159c1;
-      color: #fff;
+      background: #518cca;  
       border: 0;
       border-radius: 4px;
       overflow: hidden;
@@ -45,7 +49,7 @@ export const ProductList = styled.ul`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.06, '#7159c1')};
+        background: ${darken(0.06, '#f78f3f')};
       }
 
       div {
@@ -64,6 +68,44 @@ export const ProductList = styled.ul`
         text-align: center;
         font-weight: bold;
       }
+
     }
+
   }
+
+
+    &:hover .expanded-information {
+      display: inline;
+    }
+    &:hover .basic-information {
+      filter: blur(8px);
+  -webkit-filter: blur(8px);
+    }
+ 
+    .expanded-information{
+      /* background-color: #fff; */
+      display: none;
+      position: absolute;
+      >p{
+        margin: 1.5rem;
+        color: #fff;
+        text-align: center;
+        max-width: 250px;
+      }
+      justify-content: center;
+    }
+
+
+
+  }
+
+  @media only screen and (max-width: 1024px) {
+    display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  }
+  @media only screen and (max-width: 750px) {
+    display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  }
+
 `;

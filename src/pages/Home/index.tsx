@@ -30,20 +30,27 @@ function Home() {
       {comics.map(comic => {
         return (
           <li key={comic.id}>
-            <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={`Capa da HQ ${comic.title}`} />
-            <strong>{comic.title}</strong>
-            <span>R$ {comic.prices[0].price || 'Preço indisponivel'}</span>
-            <button
-              type="button"
-            // onClick={() => handleAddProduct(product.id)}
-            >
-              <div data-testid="cart-product-quantity">
-                <MdAddShoppingCart size={16} color="#FFF" />
-                0
-              </div>
+            <div className="basic-information">
+              <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={`Capa da HQ ${comic.title}`} />
+              <strong>{comic.title}</strong>
+              <span>R$ {comic.prices[0].price || 'Preço indisponivel'}</span>
+              <button
+                type="button"
+              // onClick={() => handleAddProduct(product.id)}
+              >
+                <div data-testid="cart-product-quantity">
+                  <MdAddShoppingCart size={16} color="#FFF" />
+                  0
+                </div>
 
-              <span>ADICIONAR AO CARRINHO</span>
-            </button>
+                <span>ADICIONAR AO CARRINHO</span>
+              </button>
+            </div>
+            <div className="expanded-information">
+              <p>{comic.description}</p>
+
+              {/* <p>{comic.creators.items[0].role || null}</p> */}
+            </div>
           </li>
         )
 

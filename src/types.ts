@@ -1,16 +1,32 @@
 export interface Comic {
   id: number;
   title: string;
+  description: string;
   thumbnail: {
     path: string;
     extension: string;
-  }
-  prices: any
+  };
+  creators: any
+
+  prices: any;
   images: string;
   variantDescription: number;
+  format: string;
+  characters: {
+    thumbnail: {
+      extension: string;
+    }
+    available: number;
+    extension: string;
+    items: imageItens[];
+  };
 }
 
-export interface Stock {
-  id: number;
-  amount: number;
+type imageItens = {
+  resourceURI: string;
+  name: string;
+}
+
+export type RoomParams = {
+  id: string;
 }
