@@ -19,12 +19,15 @@ export const Container = styled.header`
     height: 100px;
     border-radius: 10px;
   }
-`;
+  `;
 
 export const Cart = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
+  background-color: #f0141e;
+  height: 50px;
+  border-radius: 10px;
 
   div {
     text-align: right;

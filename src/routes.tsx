@@ -7,7 +7,7 @@ const Routes = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/cart" component={Checkout} />
         <Route path="/comic/:id" component={ComicPage} />
       </Switch>

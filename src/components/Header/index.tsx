@@ -10,15 +10,12 @@ const Header = (): JSX.Element => {
   return (
     <Container>
       <Link to="/">
-        <img src={logo} alt="Rocketshoes" />
+        <img src={logo} alt="Marvel Logo" />
       </Link>
 
       <Cart to="/cart">
         <div>
           <strong>Meu carrinho</strong>
-          <span data-testid="cart-size">
-            2
-          </span>
         </div>
         <MdShoppingBasket size={36} color="#FFF" />
       </Cart>

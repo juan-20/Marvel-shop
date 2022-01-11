@@ -6,9 +6,11 @@ export interface Comic {
     path: string;
     extension: string;
   };
-  creators: any
+  creators: {
+    items: Items[];
+  }
 
-  prices: any;
+  prices: Price[];
   images: string;
   variantDescription: number;
   format: string;
@@ -25,6 +27,17 @@ export interface Comic {
 type imageItens = {
   resourceURI: string;
   name: string;
+}
+
+type Items = {
+  resourceURI: string;
+  name: string;
+  role: string;
+}
+
+type Price = {
+  type: string;
+  price: number;
 }
 
 export type RoomParams = {

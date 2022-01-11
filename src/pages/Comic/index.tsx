@@ -1,8 +1,8 @@
 import md5 from 'md5';
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../service/api';
-import { RoomParams, Comic } from '../../types';
+import { RoomParams, Comic } from '../../types/types';
 
 import { Container, ComicHeader } from './styles';
 
