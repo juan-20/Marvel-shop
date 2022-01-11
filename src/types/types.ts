@@ -9,7 +9,6 @@ export interface Comic {
   creators: {
     items: Items[];
   }
-
   prices: Price[];
   images: string;
   variantDescription: number;

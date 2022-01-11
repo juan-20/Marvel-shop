@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { api } from '../../service/api';
 import { RoomParams, Comic } from '../../types/types';
 
-import { Container, ComicHeader } from './styles';
+import { Container, ComicHeader, ComicBody, ComicMain } from './styles';
 
 const publicKey = '178c96387633a76bfe6461e044aa2b1b';
 const privateKey = '52415cf01d67ce75facf0c02cf7a8eae5e482402';
@@ -26,7 +26,6 @@ function ComicPage() {
     ).then(response => {
       setComics(response.data.data.results)
       console.log(response.data.data.results)
-      console.log(response.data.data.results[0].characters)
     })
       .catch(error => console.log(error))
   }, []);
@@ -36,19 +35,48 @@ function ComicPage() {
     <Container>
       {comics.map(comic => {
         return (
-          <ComicHeader key={comic.id} >
-            <h1>{comic.title}</h1>
+          <ComicMain>
+            <ComicHeader key={comic.id} >
 
-            <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
+              <h1>{comic.title}</h1>
 
-            <p>Formato: {comic.format}</p>
-            <p>Personagens {comic.characters.available}</p>
-            {comic.characters.available ?
+              <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
 
-              <img src={`${comic.characters.items[9].resourceURI}.${comic.characters}`} alt={comic.title} />
+              <p>Formato: {comic.format}</p>
 
-              : <p>lol</p>}
-          </ComicHeader>
+              {comic.characters.available ?
+                <p>Quantidade de personagens: {comic.characters.available}</p>
+                :
+                <p>Nenhum personagem informado</p>
+              }
+
+              {comic.characters.available ?
+                <img src={`${comic.characters.items[9].resourceURI}.png`} alt={comic.title} />
+                : <p>Sem imagens de personagens </p>
+              }
+
+            </ComicHeader>
+
+            <ComicBody>
+              <div className="price">
+                <h6>R$:{comic.prices[0].price}</h6>
+                <p>Entrega em 4 dias após a compra</p>
+                <p className="stock">Em estoque</p>
+                <button>Adicionar ao carrinho</button>
+              </div>
+
+              <div className="description">
+
+                <table>
+                  <tr>
+                    <td>Descrição</td>
+                    <td>{comic.description}</td>
+                  </tr>
+                </table>
+
+              </div>
+            </ComicBody>
+          </ComicMain>
         );
       })}
     </Container>
