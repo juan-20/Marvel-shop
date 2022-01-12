@@ -8,6 +8,7 @@ import { Comic, LocalStorage } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { CartProvider, useCart } from '../../hook/useCart';
+import Header from '../../components/Header';
 
 const publicKey = '178c96387633a76bfe6461e044aa2b1b';
 const privateKey = '52415cf01d67ce75facf0c02cf7a8eae5e482402';
@@ -31,42 +32,48 @@ function Home() {
 
   function HandleAddProduct(id: number) {
 
-    addProduct(id)
+    addProduct(id);
+    toast.success('Produto adicionado', {
+      theme: 'dark'
+    });
   }
   return (
-    <ProductList>
-      {comics.map(comic => {
-        return (
-          <li key={comic.id}>
-            <div className="basic-information">
-              <Link style={{ textDecoration: 'none' }} to={`comic/${comic.id}`}>
-                <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={`Capa da HQ ${comic.title}`} />
-                <strong>{comic.title}</strong>
-                <span>R$ {comic.prices[0].price || 'Preço indisponivel'}</span>
+    <>
+      <Header />
 
-              </Link>
-              <button
-                type="button"
-                onClick={() => HandleAddProduct(comic.id)}
-              >
-                <div data-testid="cart-product-quantity">
-                  <MdAddShoppingCart size={16} color="#FFF" />
-                </div>
+      <ProductList>
 
-                <span>ADICIONAR</span>
-              </button>
-            </div>
-            <div className="expanded-information">
-              {/* <p>{comic.description}</p> */}
 
-              {/* <p>{comic.creators.items[0].role || null}</p> */}
-            </div>
-          </li>
-        )
+        {comics.map(comic => {
+          return (
+            <li key={comic.id}>
+              <div className="basic-information">
+                <Link to={`comic/${comic.id}`}>
+                  <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={`Capa da HQ ${comic.title}`} />
+                  <div className="basic-information-text">
+                    <strong>{comic.title}</strong>
+                    <span>R$ {comic.prices[0].price || 'Preço indisponivel'}</span>
+                  </div>
 
-      })}
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => HandleAddProduct(comic.id)}
+                >
+                  <div data-testid="cart-product-quantity">
+                    <MdAddShoppingCart size={16} color="#FFF" />
+                  </div>
 
-    </ProductList>
+                  <span>ADICIONAR</span>
+                </button>
+              </div>
+            </li>
+          )
+
+        })}
+
+      </ProductList>
+    </>
   );
 };
 

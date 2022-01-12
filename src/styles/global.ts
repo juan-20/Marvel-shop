@@ -3,6 +3,9 @@ import { createGlobalStyle } from 'styled-components';
 
 import background from '../assets/background.svg';
 
+
+import 'react-toastify/dist/ReactToastify.css';
+
 export default createGlobalStyle`
   * {
     margin: 0;

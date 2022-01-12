@@ -50,8 +50,14 @@ export type LocalStorage = {
 }
 
 export type CartContextData = {
-  addProduct: (productId: number) => Promise<void>;
+  addProduct: (productId: any) => Promise<void>;
+  GetComic: (productId: LocalStorage[]) => Promise<void>;
+  cart: Comic[]
 }
 export type CartProviderProps = {
   children: ReactNode;
+}
+
+export type Product = {
+  ID: number;
 }

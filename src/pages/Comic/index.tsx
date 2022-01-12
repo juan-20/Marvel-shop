@@ -1,6 +1,9 @@
 import md5 from 'md5';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Header from '../../components/Header';
+import { useCart } from '../../hook/useCart';
 import { api } from '../../service/api';
 import { RoomParams, Comic } from '../../types/types';
 
@@ -30,68 +33,84 @@ function ComicPage() {
       .catch(error => console.log(error))
   }, []);
 
+
+  const { addProduct } = useCart();
+
+  function HandleAddProduct(id: any) {
+
+    addProduct([id]);
+    toast.success('Produto adicionado', {
+      theme: 'dark'
+    });
+  }
+
   return (
-    <Container>
-      {comics.map(comic => {
-        return (
-          <ComicMain key={comic.id}>
-            <ComicHeader  >
-
-              <h1>{comic.title}</h1>
-
-              <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
+    <>
+      <Header />
+      <Container>
 
 
+        {comics.map(comic => {
+          return (
+            <ComicMain key={comic.id}>
+              <ComicHeader  >
 
-              {/* {comic.characters.available ?
+                <h1>{comic.title}</h1>
+
+                <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
+
+
+
+                {/* {comic.characters.available ?
                 <img src={`${comic.characters.items[9].resourceURI}.png`} alt={comic.title} />
                 : <p>Sem imagens de personagens </p>
               } */}
 
-            </ComicHeader>
+              </ComicHeader>
 
-            <ComicBody>
-              <div className="price">
-                <h6>R$: {comic.prices[0].price}</h6>
-                <p>Entrega em 4 dias após a compra</p>
-                <p className="stock">Em estoque</p>
-                <button>Adicionar ao carrinho</button>
-              </div>
+              <ComicBody>
+                <div className="price">
+                  <h6>R$: {comic.prices[0].price}</h6>
+                  <p>Entrega em 4 dias após a compra</p>
+                  <p className="stock">Em estoque</p>
+                  <button onClick={() => HandleAddProduct(comic.id)} >Adicionar ao carrinho</button>
+                </div>
 
-              <div className="description">
+                <div className="description">
 
-                <table>
-                  <tr>
-                    <td>Descrição</td>
-                    <th>{comic.description}</th>
-                  </tr>
-                  {comic.characters.available ?
+                  <table>
                     <tr>
-                      <td>Quantidade de personagens:</td>
-                      <th>{comic.characters.available}</th>
+                      <td>Descrição</td>
+                      <th>{comic.description}</th>
                     </tr>
-                    :
+                    {comic.characters.available ?
+                      <tr>
+                        <td>Quantidade de personagens:</td>
+                        <th>{comic.characters.available}</th>
+                      </tr>
+                      :
+                      <tr>
+                        <td>Nenhum personagem informado</td>
+                        <th>--</th>
+                      </tr>
+                    }
                     <tr>
-                      <td>Nenhum personagem informado</td>
-                      <th>--</th>
+                      <td>{comic.creators.items[0].role || "--"}</td>
+                      <th>{comic.creators.items[0].name || "--"}</th>
                     </tr>
-                  }
-                  <tr>
-                    <td>{comic.creators.items[0].role || "--"}</td>
-                    <th>{comic.creators.items[0].name || "--"}</th>
-                  </tr>
-                  <tr>
-                    <td>Criadores:</td>
-                    <th>{comic.format}</th>
-                  </tr>
-                </table>
+                    <tr>
+                      <td>Criadores:</td>
+                      <th>{comic.format}</th>
+                    </tr>
+                  </table>
 
-              </div>
-            </ComicBody>
-          </ComicMain>
-        );
-      })}
-    </Container>
+                </div>
+              </ComicBody>
+            </ComicMain>
+          );
+        })}
+      </Container>
+    </>
   );
 };
 

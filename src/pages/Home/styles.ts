@@ -29,14 +29,23 @@ export const ProductList = styled.ul`
     border-radius: 50px;
     border-radius: 50px;
     background: #333;
-
+    
     height: 40rem;
+    >a{
+      max-width: 250px;
+      text-decoration: none;
+      color: #fff;
+    }
     img {
+      border-radius: 8px;
       align-self: center;
       max-width: 250px;
       height: 450px;
     }
 
+    &-text {
+    display: flex;
+    flex-direction: column;
     > strong {
       font-size: 16px;
       line-height: 20px;
@@ -48,6 +57,7 @@ export const ProductList = styled.ul`
       font-weight: bold;
       margin: 5px 0 20px;
     }
+  }
 
     button {
       background: #f0141e;  
