@@ -50,10 +50,19 @@ export const ComicBody = styled.div`
     }
     table {
     padding-top: 1.5rem;
+    color: #333;
         td, th {
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
+        }
+
+        td{ 
+            background-color: #F3F3F3;
+        }
+
+        th{ 
+            background-color: #FFFF;
         }
 
         tr:nth-child(even) {

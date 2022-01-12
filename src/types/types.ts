@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface Comic {
   id: number;
   title: string;
@@ -41,4 +43,15 @@ type Price = {
 
 export type RoomParams = {
   id: string;
+}
+
+export type LocalStorage = {
+  id: number;
+}
+
+export type CartContextData = {
+  addProduct: (productId: number) => Promise<void>;
+}
+export type CartProviderProps = {
+  children: ReactNode;
 }

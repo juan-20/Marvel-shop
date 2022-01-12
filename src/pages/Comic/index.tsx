@@ -30,36 +30,29 @@ function ComicPage() {
       .catch(error => console.log(error))
   }, []);
 
-  let characters = "";
   return (
     <Container>
       {comics.map(comic => {
         return (
-          <ComicMain>
-            <ComicHeader key={comic.id} >
+          <ComicMain key={comic.id}>
+            <ComicHeader  >
 
               <h1>{comic.title}</h1>
 
               <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
 
-              <p>Formato: {comic.format}</p>
 
-              {comic.characters.available ?
-                <p>Quantidade de personagens: {comic.characters.available}</p>
-                :
-                <p>Nenhum personagem informado</p>
-              }
 
-              {comic.characters.available ?
+              {/* {comic.characters.available ?
                 <img src={`${comic.characters.items[9].resourceURI}.png`} alt={comic.title} />
                 : <p>Sem imagens de personagens </p>
-              }
+              } */}
 
             </ComicHeader>
 
             <ComicBody>
               <div className="price">
-                <h6>R$:{comic.prices[0].price}</h6>
+                <h6>R$: {comic.prices[0].price}</h6>
                 <p>Entrega em 4 dias após a compra</p>
                 <p className="stock">Em estoque</p>
                 <button>Adicionar ao carrinho</button>
@@ -70,7 +63,26 @@ function ComicPage() {
                 <table>
                   <tr>
                     <td>Descrição</td>
-                    <td>{comic.description}</td>
+                    <th>{comic.description}</th>
+                  </tr>
+                  {comic.characters.available ?
+                    <tr>
+                      <td>Quantidade de personagens:</td>
+                      <th>{comic.characters.available}</th>
+                    </tr>
+                    :
+                    <tr>
+                      <td>Nenhum personagem informado</td>
+                      <th>--</th>
+                    </tr>
+                  }
+                  <tr>
+                    <td>{comic.creators.items[0].role || "--"}</td>
+                    <th>{comic.creators.items[0].name || "--"}</th>
+                  </tr>
+                  <tr>
+                    <td>Criadores:</td>
+                    <th>{comic.format}</th>
                   </tr>
                 </table>
 

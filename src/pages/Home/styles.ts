@@ -6,8 +6,15 @@ export const ProductList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   list-style: none;
+  
+  color: #fff;
 
   li {
+    text-decoration: none;
+
+&:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+}
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -15,19 +22,24 @@ export const ProductList = styled.ul`
     .basic-information{
     display: flex;
     flex-direction: column;
-    background: #fff;
+    color: #fff;
     border-radius: 4px;
     padding: 20px;
     
+    border-radius: 50px;
+    border-radius: 50px;
+    background: #333;
+
+    height: 40rem;
     img {
       align-self: center;
       max-width: 250px;
+      height: 450px;
     }
 
     > strong {
       font-size: 16px;
       line-height: 20px;
-      color: #333;
       margin-top: 5px;
     }
 
@@ -38,7 +50,7 @@ export const ProductList = styled.ul`
     }
 
     button {
-      background: #518cca;  
+      background: #f0141e;  
       border: 0;
       border-radius: 4px;
       overflow: hidden;
@@ -49,7 +61,7 @@ export const ProductList = styled.ul`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.06, '#f78f3f')};
+        background: ${darken(0.02, '#f0141e')};
       }
 
       div {
@@ -68,20 +80,8 @@ export const ProductList = styled.ul`
         text-align: center;
         font-weight: bold;
       }
-
     }
-
-  }
-
-
-    &:hover .expanded-information {
-      display: inline;
-    }
-    &:hover .basic-information {
-      filter: blur(8px);
-  -webkit-filter: blur(8px);
-    }
- 
+  } 
     .expanded-information{
       /* background-color: #fff; */
       display: none;

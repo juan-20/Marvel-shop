@@ -1,25 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { Container, Cart, Logo } from './styles';
 import { MdShoppingBasket } from 'react-icons/md';
 
 import logo from '../../assets/marvel-logo.svg';
-import { Container, Cart } from './styles';
 
 const Header = (): JSX.Element => {
+  const history = useHistory();
 
+  function goBack() {
+    history.push('/');
+    console.log(history);
+  }
   return (
     <Container>
-      <Link to="/">
+      <Logo onClick={goBack}>
         <img src={logo} alt="Marvel Logo" />
-      </Link>
+      </Logo>
 
       <Cart to="/cart">
-        <div>
-          <strong>Meu carrinho</strong>
-        </div>
         <MdShoppingBasket size={36} color="#FFF" />
       </Cart>
-    </Container>
+    </Container >
   );
 };
 
