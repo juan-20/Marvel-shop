@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { Container, ProductList } from './styles';
+import { Container, ProductList, Purchased } from './styles';
 import Header from '../../components/Header';
 import { api } from '../../service/api';
 import { Comic, LocalStorage, Product } from '../../types/types';
@@ -28,10 +28,17 @@ function Checkout() {
           <>
             {cartFormatted.map(cartFormatteds => {
               return (
-                <div key={cartFormatted.id}>
-                  <p>Suas compras:</p>
-                  <p>Revistas com id: {cartFormatteds.id}</p>
-                </div>
+                <Purchased key={cartFormatteds.id}>
+                  <div className="content">
+                    <h1>Suas compras:</h1>
+                    <h3>Revistas: {cartFormatteds.title}</h3>
+                    <img src={`${cartFormatteds.thumbnail.path}.${cartFormatteds.thumbnail.extension}`} alt={cartFormatteds.title} />
+                  </div>
+                  <div className="price">
+                    <h6>R$: {cartFormatteds.prices[0].price}</h6>
+                    <button>Comprar</button>
+                  </div>
+                </Purchased>
               );
             })}
           </>
