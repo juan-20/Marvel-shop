@@ -70,7 +70,7 @@ function ComicPage() {
                   <h6>R$: {comic.prices[0].price}</h6>
                   <p>Entrega em 4 dias após a compra</p>
                   <p className="stock">Em estoque</p>
-                  <button onClick={() => HandleAddProduct(comic.id)} >Adicionar ao carrinho</button>
+                  <button onClick={() => HandleAddProduct(comic)} >Adicionar ao carrinho</button>
                 </div>
 
                 <div className="description">

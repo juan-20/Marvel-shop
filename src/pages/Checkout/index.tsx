@@ -14,12 +14,6 @@ function Checkout() {
 
   const cartFormatted = cart;
 
-  console.log(cart)
-  // function handleget() {
-  //   let id: Comic[] = cartFormatted;
-  //   GetComic(id);
-  // }
-
   return (
     <Container>
       <Header />

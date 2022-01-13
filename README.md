@@ -1,6 +1,8 @@
 # Site Marvel 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![](https://github.com/juan-20/Marvel-shop/blob/main/src/assets/readme/site_mavel_final.gif?raw=true)](https://github.com/juan-20/Marvel-shop/blob/main/src/assets/readme/site_mavel_final.gif?raw=true)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
 ## Rodar o projeto
 
