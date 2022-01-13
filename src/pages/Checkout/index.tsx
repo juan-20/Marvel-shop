@@ -32,7 +32,11 @@ function Checkout() {
                   <div className="content">
                     <h1>Suas compras:</h1>
                     <h3>Revistas: {cartFormatteds.title}</h3>
-                    <img src={`${cartFormatteds.thumbnail.path}.${cartFormatteds.thumbnail.extension}`} alt={cartFormatteds.title} />
+                    {cartFormatteds.thumbnail ?
+                      <img src={`${cartFormatteds.thumbnail.path}.${cartFormatteds.thumbnail.extension}`} alt={cartFormatteds.title} />
+                      :
+                      <p>Sem imagem</p>
+                    }
                   </div>
                   <div className="price">
                     <h6>R$: {cartFormatteds.prices[0].price}</h6>
