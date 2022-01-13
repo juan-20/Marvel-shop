@@ -22,14 +22,11 @@ function Checkout() {
   return (
     <Container>
       <Header />
-      {cartFormatted.map((product: any) => (
-        <ProductList key={product}>
-
-          <p>{product}</p>
-          <button onClick={handleget}>alooo</button>
-        </ProductList>
-      ))}
-      <p>alo</p>
+      {cartFormatted ?
+        <p>Existe HQ</p>
+        :
+        <p>Nada no carrinho</p>
+      }
     </Container>
   );
 };

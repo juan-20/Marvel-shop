@@ -36,7 +36,7 @@ function ComicPage() {
 
   const { addProduct } = useCart();
 
-  function HandleAddProduct(id: Comic) {
+  function HandleAddProduct(id: any) {
 
     addProduct([id]);
     toast.success('Produto adicionado', {
@@ -59,8 +59,6 @@ function ComicPage() {
 
                 <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title} />
 
-
-
                 {/* {comic.characters.available ?
                 <img src={`${comic.characters.items[9].resourceURI}.png`} alt={comic.title} />
                 : <p>Sem imagens de personagens </p>
@@ -73,7 +71,7 @@ function ComicPage() {
                   <h6>R$: {comic.prices[0].price}</h6>
                   <p>Entrega em 4 dias após a compra</p>
                   <p className="stock">Em estoque</p>
-                  <button onClick={() => HandleAddProduct(comic)} >Adicionar ao carrinho</button>
+                  <button onClick={() => HandleAddProduct(comic.id)} >Adicionar ao carrinho</button>
                 </div>
 
                 <div className="description">
@@ -94,12 +92,19 @@ function ComicPage() {
                         <th>--</th>
                       </tr>
                     }
+                    {comic.characters.available ?
+                      <tr>
+                        <td>{comic.creators.items[0].role || "--"}</td>
+                        <th>{comic.creators.items[0].name || "--"}</th>
+                      </tr>
+                      :
+                      <tr>
+                        <td>Nenhum personagem informado</td>
+                        <th>--</th>
+                      </tr>
+                    }
                     <tr>
-                      <td>{comic.creators.items[0].role || "--"}</td>
-                      <th>{comic.creators.items[0].name || "--"}</th>
-                    </tr>
-                    <tr>
-                      <td>Criadores:</td>
+                      <td>Formato:</td>
                       <th>{comic.format}</th>
                     </tr>
                   </table>
