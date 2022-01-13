@@ -8,6 +8,12 @@ export const ComicMain = styled.main`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+
+    @media only screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: repeat(0, 1fr);
+  }
 `;
 
 export const ComicHeader = styled.div`

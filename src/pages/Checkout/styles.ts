@@ -42,5 +42,18 @@ export const Purchased = styled.div`
                 border-radius: 15px;
             }
     }
+    @media only screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: repeat(0, 1fr);
+        .content{
+            padding-top: 20rem;
+            img{
+                width: 100vw;
+            }
+        }
+        .price{
+            padding-top: 5rem;
+  }
 
 `;
