@@ -11,25 +11,30 @@ const CartContext = createContext<CartContextData>({} as CartContextData);
 export function CartProvider({ children }: CartProviderProps) {
 
     const [cart, setCart] = useState<any>(() => {
-        const storagedCart = localStorage.getItem('@Marvel:cart');
+        const storagedCart: any = localStorage.getItem('@Marvel:cart');
         console.log(storagedCart);
+        console.log(JSON.parse(storagedCart));
 
-        if (storagedCart) {
-            return JSON.parse(storagedCart);
-        }
+        // if (storagedCart) {
+        return JSON.parse(storagedCart);
+        // }
 
         return [];
     });
 
-    const addProduct = async (productId: number) => {
-        console.log(cart);
-        const updatedCart = [...cart];
-
-        setCart(updatedCart)
-        let amount = 0;
-        updatedCart.push(productId);
+    const addProduct: any = async (id: any) => {
+        // try {
+        debugger
+        let updatedCart: any = localStorage.getItem('@Marvel:cart');
+        console.log(updatedCart);
+        console.log(id)
+        updatedCart = [...id]
+        console.log(updatedCart)
         localStorage.setItem('@Marvel:cart', JSON.stringify(updatedCart))
-
+        toast.success('Produto adicionado');
+        // } catch {
+        // toast.error('Erro na adição do produto');
+        // }
     };
 
     const GetComic = async (productId: LocalStorage[]) => {

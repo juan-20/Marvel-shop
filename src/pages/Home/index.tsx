@@ -4,7 +4,7 @@ import { api } from '../../service/api';
 
 import md5 from 'md5';
 import { useEffect, useState } from 'react';
-import { Comic, LocalStorage } from '../../types/types';
+import { Comic, LocalStorage, Product } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { CartProvider, useCart } from '../../hook/useCart';
@@ -30,7 +30,7 @@ function Home() {
   }, []);
 
 
-  function HandleAddProduct(id: number) {
+  function HandleAddProduct(id: any) {
 
     addProduct(id);
     toast.success('Produto adicionado', {
@@ -58,7 +58,7 @@ function Home() {
                 </Link>
                 <button
                   type="button"
-                  onClick={() => HandleAddProduct(comic.id)}
+                  onClick={() => HandleAddProduct(comic)}
                 >
                   <div data-testid="cart-product-quantity">
                     <MdAddShoppingCart size={16} color="#FFF" />
