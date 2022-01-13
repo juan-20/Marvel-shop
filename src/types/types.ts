@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 export interface Comic {
-  id: number;
+  id: any;
   title: string;
   description: string;
   thumbnail: {
@@ -50,7 +50,7 @@ export type LocalStorage = {
 }
 
 export type CartContextData = {
-  addProduct: (productId: any) => Promise<void>;
+  addProduct: (productId: Comic[]) => Promise<void>;
   GetComic: (productId: LocalStorage[]) => Promise<void>;
   cart: Comic[]
 }

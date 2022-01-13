@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    /* background-color: #fff; */
 `;
 
 export const ProductList = styled.div`
-    /* background-color: #fff; */
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    >p{
+        font-size: 1.5rem;
+    }
 `;

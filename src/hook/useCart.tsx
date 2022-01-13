@@ -12,8 +12,6 @@ export function CartProvider({ children }: CartProviderProps) {
 
     const [cart, setCart] = useState<any>(() => {
         const storagedCart: any = localStorage.getItem('@Marvel:cart');
-        console.log(storagedCart);
-        console.log(JSON.parse(storagedCart));
 
         // if (storagedCart) {
         return JSON.parse(storagedCart);
@@ -23,23 +21,13 @@ export function CartProvider({ children }: CartProviderProps) {
     });
 
     const addProduct: any = async (id: any) => {
-        // try {
-        debugger
         let updatedCart: any = localStorage.getItem('@Marvel:cart');
-        console.log(updatedCart);
-        console.log(id)
+        // problema com deixar o push do id
         updatedCart = [...id]
-        console.log(updatedCart)
         localStorage.setItem('@Marvel:cart', JSON.stringify(updatedCart))
-        toast.success('Produto adicionado');
-        // } catch {
-        // toast.error('Erro na adição do produto');
-        // }
     };
 
     const GetComic = async (productId: LocalStorage[]) => {
-        console.log(cart);
-        console.log("alo");
 
         const publicKey = '178c96387633a76bfe6461e044aa2b1b';
         const privateKey = '52415cf01d67ce75facf0c02cf7a8eae5e482402';
@@ -53,7 +41,6 @@ export function CartProvider({ children }: CartProviderProps) {
                     `http://gateway.marvel.com/v1/public/comics/${productId}?ts=${time}&apikey=${publicKey}&hash=${hash}`
                 ).then(response => {
                     const setComics = (response.data.data.results)
-                    console.log(response.data.data.results)
                 })
 
             })

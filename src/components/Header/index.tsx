@@ -10,7 +10,6 @@ const Header = (): JSX.Element => {
 
   function goBack() {
     history.push('/');
-    console.log(history);
   }
   return (
     <Container>

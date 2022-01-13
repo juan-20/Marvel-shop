@@ -28,7 +28,6 @@ function ComicPage() {
       `http://gateway.marvel.com/v1/public/comics/${comicId}?ts=${time}&apikey=${publicKey}&hash=${hash}`
     ).then(response => {
       setComics(response.data.data.results)
-      console.log(response.data.data.results)
     })
       .catch(error => console.log(error))
   }, []);
@@ -36,7 +35,7 @@ function ComicPage() {
 
   const { addProduct } = useCart();
 
-  function HandleAddProduct(id: any) {
+  function HandleAddProduct(id: Comic) {
 
     addProduct([id]);
     toast.success('Produto adicionado', {

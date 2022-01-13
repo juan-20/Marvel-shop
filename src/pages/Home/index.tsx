@@ -24,15 +24,14 @@ function Home() {
       `http://gateway.marvel.com/v1/public/comics?ts=${time}&apikey=${publicKey}&hash=${hash}`
     ).then(response => {
       setComics(response.data.data.results)
-      console.log(response.data.data.results)
     })
       .catch(error => console.log(error))
   }, []);
 
 
-  function HandleAddProduct(id: any) {
+  function HandleAddProduct(id: Comic) {
 
-    addProduct(id);
+    addProduct([id]);
     toast.success('Produto adicionado', {
       theme: 'dark'
     });
